@@ -296,6 +296,7 @@ export default function App() {
   });
 
   const [activeSection, setActiveSection] = useState("about");
+
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
 
@@ -332,6 +333,12 @@ export default function App() {
 
   return (
     <div ref={containerRef} className="relative min-h-screen bg-surface-container-lowest overflow-x-hidden">
+      {/* 3D Scroll Progress */}
+      <motion.div 
+        className="fixed top-0 left-0 right-0 h-1 bg-primary z-[100] origin-left shadow-[0_0_15px_rgba(157,78,221,0.5)]"
+        style={{ scaleX: scrollYProgress }}
+      />
+
       {/* Background Effects */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute inset-0 cyber-grid opacity-20" />
@@ -435,7 +442,7 @@ export default function App() {
           </button>
           <div className="w-8 h-8 rounded-full overflow-hidden border border-outline-variant/30">
             <img 
-              src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=100&h=100" 
+              src="https://cdn.postimage.me/2026/04/06/logo-of-pages.jpeg" 
               alt="Dental Logo" 
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
@@ -484,6 +491,31 @@ export default function App() {
                 View Pricing
               </button>
             </div>
+
+            {/* 3D Stats Counter */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 pt-12">
+              <motion.div 
+                whileHover={{ y: -5, rotateY: 10, scale: 1.05 }}
+                className="glass-panel p-4 rounded-2xl border-outline-variant/10 perspective-1000 preserve-3d shadow-lg"
+              >
+                <p className="text-3xl font-black cyber-gradient-text translate-z-20">50+</p>
+                <p className="font-label text-[10px] text-on-surface-variant uppercase tracking-widest translate-z-10">Clinics_Served</p>
+              </motion.div>
+              <motion.div 
+                whileHover={{ y: -5, rotateY: 10, scale: 1.05 }}
+                className="glass-panel p-4 rounded-2xl border-outline-variant/10 perspective-1000 preserve-3d shadow-lg"
+              >
+                <p className="text-3xl font-black cyber-gradient-text translate-z-20">98%</p>
+                <p className="font-label text-[10px] text-on-surface-variant uppercase tracking-widest translate-z-10">Trust_Score</p>
+              </motion.div>
+              <motion.div 
+                whileHover={{ y: -5, rotateY: 10, scale: 1.05 }}
+                className="glass-panel p-4 rounded-2xl border-outline-variant/10 perspective-1000 preserve-3d shadow-lg hidden sm:block"
+              >
+                <p className="text-3xl font-black cyber-gradient-text translate-z-20">24/7</p>
+                <p className="font-label text-[10px] text-on-surface-variant uppercase tracking-widest translate-z-10">Neural_Support</p>
+              </motion.div>
+            </div>
           </motion.div>
 
           <motion.div 
@@ -499,7 +531,7 @@ export default function App() {
               className="relative glass-panel rounded-xl aspect-square flex items-center justify-center p-8 border-outline-variant/10 shadow-3d overflow-hidden preserve-3d"
             >
               <img 
-                src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=800&h=800" 
+                src="https://cdn.postimage.me/2026/04/06/logo-of-pages.jpeg" 
                 alt="Dental Clinic" 
                 className="w-full h-full object-cover rounded-lg opacity-90 group-hover:opacity-100 transition-opacity duration-500 backface-hidden"
                 referrerPolicy="no-referrer"
@@ -509,6 +541,9 @@ export default function App() {
               </div>
               <div className="absolute bottom-10 right-6 px-3 py-1 rounded-full glass-panel border-outline-variant/20 translate-z-30 shadow-lg">
                 <span className="text-[10px] font-label text-primary tracking-tighter uppercase">Digital_Partner: Nischay_Core</span>
+              </div>
+              <div className="absolute top-1/2 -right-4 px-3 py-1 rounded-full glass-panel border-outline-variant/20 translate-z-50 shadow-2xl rotate-y-12 hidden md:block">
+                <span className="text-[10px] font-label text-green-500 tracking-tighter uppercase font-bold">LIVE_AUDIT_ACTIVE</span>
               </div>
             </motion.div>
           </motion.div>
